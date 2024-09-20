@@ -1,0 +1,21 @@
+---
+interface Props {
+  href: string;
+  variant?: "primary" | "secondary";
+}
+
+const { href, variant = "primary" } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    "flex items-center justify-center w-full h-12 rounded-xl gap-x-2 font-bold",
+    {
+      "bg-foreground text-background": variant === "primary",
+      "bg-secondary": variant === "secondary",
+    },
+  ]}
+>
+  <slot />
+</a>
